@@ -40,9 +40,9 @@ router.post('/', async (req, res) => {
   // create a new category
   try {
     const newCategory = await Category.create(req.body);
-    res.status(201).json(newCategory);
+    res.status(200).json(newCategory);
   } catch (err) {
-    res.status(400).json(err);
+    res.status(400).json({ message: 'Failed to create category. Please check your request payload.', error: err.message });
   }
 });
 
